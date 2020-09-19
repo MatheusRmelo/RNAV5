@@ -1,40 +1,30 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import { Button, Text, Image } from 'react-native'
 
 import HomeScreen from '../pages/HomeScreen'
 import AboutScreen from '../pages/AboutScreen'
+import ReceitaScreen from '../pages/ReceitaScreen'
 
+import Logo from '../components/Logo'
 
 const MainStack = createStackNavigator()
 
 export default () => {
     return(
         <MainStack.Navigator screenOptions={{
-            headerTitleAlign: 'center',
+            headerTitleAlign: 'left',
             headerStyle: {
-                backgroundColor: '#0000FF',
-                height:120
+                backgroundColor: '#CCC',
             },
             headerTitleStyle: {
-                color: 'white',
+                color: '#000',
                 fontSize: 16
             }
         }}>
-            <MainStack.Screen name="Home" component={HomeScreen} 
-                    options={
-                        {
-                            title: 'Alguma coisa bem grande que ficará imensa'
-                        }
-                    } 
-                    />
-            <MainStack.Screen name="About" component={AboutScreen} options={({route})=>({
-                headerStyle:{
-                    backgroundColor: route.params?.cor ?? '#FF0000',
-                    height: 120
-                },
-                headerBackTitleVisible:true,
-                headerTruncatedBackTitle: 'Voltar'
-            })}/>
+            <MainStack.Screen name="Receita" component={ReceitaScreen} />
+            <MainStack.Screen name="Home" component={HomeScreen} />
+            <MainStack.Screen name="About" component={AboutScreen} />
         </MainStack.Navigator>  
     )
 }
